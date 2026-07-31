@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Center | Ratan Clinic Systems</title>
+    <meta name="description" content="Legal center for Ratan Clinic Systems. Transparency, Data Ownership, and Service Clarity.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* REBRANDED COLOR PALETTE (Dark Green & Burnt Orange) */
+        :root { 
+            --primary: #0a4d3f;       
+            --primary-dark: #05362b;
+            --accent: #e07c26;        
+            --bg: #f8fafc; 
+            --text: #334155; 
+            --border: #e2e8f0; 
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 0; }
+        
+        /* LAYOUT */
+        .container { max-width: 900px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 30px; text-align: center; }
+        .header img { height: 50px; width: auto; margin-bottom: 10px; background: white; padding: 5px; border-radius: 8px; }
+        .header h1 { margin: 10px 0 0; font-size: 24px; letter-spacing: 0.5px;}
+        .header p { margin-top: 5px; opacity: 0.8; font-size: 14px; }
+
+        /* TABS */
+        .tabs { display: flex; border-bottom: 1px solid var(--border); background: #f1f5f9; }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-weight: 600; color: #64748b; transition: 0.2s; border-bottom: 3px solid transparent; }
+        .tab-btn:hover { background: #e2e8f0; }
+        .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: white; }
+
+        /* CONTENT */
+        .content { padding: 40px; display: none; }
+        .content.active { display: block; }
+        
+        h2 { color: var(--primary); font-size: 18px; margin-top: 30px; margin-bottom: 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
+        h2:first-child { margin-top: 0; }
+        p { margin-bottom: 15px; font-size: 14px; color: #475569; text-align: justify; }
+        ul { margin-bottom: 15px; padding-left: 20px; }
+        li { font-size: 14px; margin-bottom: 8px; color: #475569; }
+
+        /* HIGHLIGHT BOXES */
+        .alert { background: #fffbeb; border-left: 4px solid var(--accent); padding: 15px; font-size: 13px; margin: 20px 0; color: #92400e; }
+        .alert strong { color: #78350f; }
+        .footer { text-align: center; padding: 20px; font-size: 12px; color: #94a3b8; border-top: 1px solid var(--border); }
+        a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .container { margin: 0; border-radius: 0; }
+            .content { padding: 20px; }
+            .tabs { flex-direction: column; }
+            .tab-btn { border-bottom: 1px solid var(--border); }
+            .tab-btn.active { border-bottom: 3px solid var(--primary); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <!-- Loading the same logo from your main folder -->
+        <img src="./logo.png" alt="Ratan Logo">
+        <h1>Ratan Clinic Systems | Legal</h1>
+        <p>Transparency. Data Ownership. Service Clarity.</p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'terms')">Terms of Service</button>
+        <button class="tab-btn" onclick="openTab(event, 'refund')">Refund Policy</button>
+        <button class="tab-btn" onclick="openTab(event, 'privacy')">Privacy Policy</button>
+    </div>
+
+    <div id="terms" class="content active">
+        <h2>1. Scope of Service</h2>
+        <p>Ratan Clinic Systems ("Company", "We", "Us") specializes in building custom digital storefronts, zero-commission booking engines, and offline-ready management tools for eye clinics and hospitals in Assam. Our core service includes a custom-coded informational website with an integrated patient booking form that connects directly to the clinic's WhatsApp/backend.</p>
+        <p><strong>Optional upgrades:</strong> Full offline Hospital Management Systems (HMS) and OPD workflow tools are available as separate, quoted projects and are not covered under the standard website booking agreement.</p>
+
+        <h2>2. Pricing & Annual Maintenance Contract (AMC)</h2>
+        <p>Ratan Clinic Systems operates on a tiered pricing model based on the clinic's operational needs. The specific tier will be detailed in the final invoice/proposal provided to the client. Each tier includes a one-time Setup Fee and an Annual Maintenance Contract (AMC).</p>
+        
+        <p><strong>Tier 1: WhatsApp Connect</strong></p>
+        <ul>
+            <li><strong>Setup Fee:</strong> ₹10,000</li>
+            <li><strong>AMC:</strong> ₹3,000/year</li>
+            <li><strong>Included:</strong> Premium mobile-first website, direct WhatsApp booking pre-fill. No database integration.</li>
+        </ul>
+
+        <p><strong>Tier 2: Smart Queue (Polyclinic / 1+ Doctors)</strong></p>
+        <ul>
+            <li><strong>Setup Fee:</strong> ₹15,000</li>
+            <li><strong>AMC:</strong> ₹10,000/year</li>
+            <li><strong>Included:</strong> Everything in Tier 1, plus automated Google Sheets webhook for a live reception queue and multi-doctor routing.</li>
+        </ul>
+
+        <p><strong>Tier 3: Full Admin Dashboard (Full DB)</strong></p>
+        <ul>
+            <li><strong>Setup Fee:</strong> ₹25,000</li>
+            <li><strong>AMC:</strong> ₹20,000/year</li>
+            <li><strong>Included:</strong> Everything in Tier 2, plus a private PythonAnywhere Flask backend with a password-protected admin dashboard, patient history, and exportable reports.</li>
+        </ul>
+
+        <p>The AMC covers the running costs and ongoing care of the digital platform. The yearly fee covers:</p>
+        <ul>
+            <li><strong>Domain Renewal:</strong> Annual cost of the clinic's custom domain (if purchased through us).</li>
+            <li><strong>SSL Security:</strong> Automatic renewal of SSL certificates ensuring the "padlock" icon remains active.</li>
+            <li><strong>Cloud Hosting:</strong> Infrastructure fees to ensure 24/7 uptime.</li>
+            <li><strong>Minor Content Updates:</strong> Unlimited minor changes (e.g., changing a phone number, swapping a doctor's photo, updating clinic timings) throughout the year.</li>
+            <li><strong>Priority Maintenance:</strong> Technical support for website bugs or security patches.</li>
+        </ul>
+
+        <div class="alert">
+            <strong>⚠️ Scope Creep Policy:</strong> Major structural changes (e.g., adding a completely new page, changing the booking form logic, integrating a full HMS, or entirely redesigning the layout) are NOT covered under the AMC. These major feature requests will be quoted as separate projects at a discounted consulting rate for AMC clients.
+        </div>
+
+        <h2>3. Ownership & Intellectual Property</h2>
+        <ul>
+            <li><strong>Content Ownership:</strong> The clinic (Client) retains 100% ownership of all uploaded content (doctor profiles, logos, text, and photos) and <strong>all patient booking data</strong> collected via the website. Ratan Clinic Systems retains ownership of the underlying source code and backend architecture.</li>
+            <li><strong>Backend & Code IP:</strong> Ratan Clinic Systems retains full intellectual property rights to the source code, booking API architecture, custom Flask backend, and the core technologies utilized to build and maintain the system.</li>
+            <li><strong>Non-Compete:</strong> The code is not for resale or redistribution by the clinic. The license is exclusive to the specific clinic for the duration of the service.</li>
+        </ul>
+
+        <h2>4. Delivery & Revisions</h2>
+        <p>Once we receive the clinic's required assets (name, address, logos, doctor photos, and contact info), we deliver a live preview link within <strong>24-48 hours</strong>. The ₹15,000 setup fee includes <strong>2 rounds of revisions</strong> (minor text and layout adjustments). Any revisions beyond 2 rounds are subject to a ₹2,000 per session consulting fee.</p>
+
+        <h2>5. Third-Party Services</h2>
+        <p>Ratan Clinic Systems utilizes GitHub Pages, Cloudflare CDN, and PythonAnywhere for infrastructure and routing. While we maintain strict uptime monitoring, we are not liable for outages or downtime caused by these third-party infrastructure providers. AMC includes troubleshooting and migrating the site to restore service in the event of a third-party outage.</p>
+
+        <h2>6. Jurisdiction</h2>
+        <p>These terms shall be governed by the laws of India. Any disputes arising out of this agreement shall be subject to the exclusive jurisdiction of the courts in <strong>Guwahati, Assam</strong>.</p>
+    </div>
+
+    <div id="refund" class="content">
+        <h2>1. Custom Development Nature</h2>
+        <p>Because we are building a fully custom-coded, tailored solution for your specific eye clinic (as opposed to a generic template), we do not offer refunds once development has begun and a live preview has been shared.</p>
+
+        <div class="alert">
+            <strong>All custom development projects are non-refundable</strong> once the initial setup and preview have been delivered.
+        </div>
+
+        <h2>2. Exceptions</h2>
+        <p>A full refund will only be issued if either of the following two conditions apply:</p>
+        <ul>
+            <li>Ratan Clinic Systems fails to deliver a live preview link within <strong>48 hours</strong> of receiving both (a) the ₹15,000 setup fee, and (b) all required business assets from the clinic.</li>
+            <li>There is a catastrophic technical error on the Ratan Clinic Systems backend that permanently prevents the site from loading, and the issue cannot be resolved within <strong>7 calendar days</strong> of reporting.</li>
+        </ul>
+        <p><strong>Refunds are NOT issued</strong> if the clinic owner decides they no longer need the website, if they prefer to continue using a pharma-provided free template, or if the clinic goes out of business. Since we have already invested significant time and code architecture into the custom project, the sale is legally considered final upon the delivery of the preview link.</p>
+    </div>
+
+    <div id="privacy" class="content">
+        <h2>1. Data We Collect (From the Clinic)</h2>
+        <p>To build the custom website, we require the following public clinic information:</p>
+        <ul>
+            <li>Clinic Name, Address, and Google Maps embed link.</li>
+            <li>Names, qualifications, and photographs of the treating doctors.</li>
+            <li>List of services offered (e.g., Cataract, Glaucoma, Retina).</li>
+            <li>Contact Phone Number and Email Address.</li>
+        </ul>
+
+        <h2>2. Patient Booking Data (The Zero-Commission Engine)</h2>
+        <p><strong>Ratan Clinic Systems does NOT store, sell, or share patient data.</strong></p>
+        <ul>
+            <li>When a patient submits a booking via the custom website, the data (Name, Phone, Date, and Reason) is transmitted <strong>directly</strong> to the clinic's WhatsApp or the Ratan Clinic Systems Admin Dashboard.</li>
+            <li>Ratan Clinic Systems acts as the data pipeline (API). We do not retain patient health records or sensitive medical details in our cloud infrastructure. The data belongs entirely to the clinic.</li>
+        </ul>
+
+        <h2>3. Data Retention</h2>
+        <p>We retain the clinic's onboarding details and communication records for operational, tax, and compliance purposes. You may request to have your profile closed at any time; however, financial records and support chat logs may be retained as required by Indian law and for legitimate business record-keeping.</p>
+
+        <h2>4. Public Nature</h2>
+        <p>The informational pages of the custom website (doctor profiles, gallery, services, address) are designed to be <strong>publicly accessible on the internet</strong> to help patients find the clinic. Clinics should ensure they do not include private contact numbers or photos that they wish to keep off the public web.</p>
+
+        <h2>5. Data Deletion & Contact</h2>
+        <p>If you wish to request the complete deletion of your clinic's data or profile from the Ratan Clinic Systems system (excluding mandatory financial records), please contact us via WhatsApp at <strong>+91 6001699400</strong>.</p>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Ratan Clinic Systems. All Rights Reserved.<br>
+        <a href="index.html">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, content, tabbtns;
+        content = document.getElementsByClassName("content");
+        for (i = 0; i < content.length; i++) {
+            content[i].style.display = "none";
+        }
+        tabbtns = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabbtns.length; i++) {
+            tabbtns[i].className = tabbtns[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>

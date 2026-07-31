@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratan | Custom Websites for Clinics</title>
+    <meta name="description" content="Custom, premium websites for clinics and hospitals by Ratan Clinic Systems.">
+    
+    <link rel="icon" type="image/png" href="./logo.png">
+
+    <meta property="og:site_name" content="Ratan">
+    <meta property="og:title" content="Ratan Custom Clinic Websites">
+    <meta property="og:description" content="Zero-commission booking. Premium mobile-first design.">
+    <meta property="og:image" content="https://ratan.github.io/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ratan.github.io/">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* NEW BRAND COLORS - Dark Green & Burnt Orange */
+            --primary: #0a4d3f;       
+            --primary-dark: #05362b;
+            --gold: #e07c26;          
+            --gold-light: #fff4ec;
+            --bg: #f4f7fa;            
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --radius: 12px;
+            --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAVBAR */
+        .navbar { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            padding: 12px 5%; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+            display: flex; 
+            justify-content: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .brand { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
+        .logo-img { height: 60px; width: auto; margin-bottom: 2px; }
+        .brand-text { font-weight: 800; font-size: 18px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
+        .brand-tagline { font-size: 9px; background: var(--gold); color: white; padding: 2px 8px; border-radius: 4px; margin-top: 4px; font-weight: 600; letter-spacing: 0.5px; }
+        .msme-badge { font-size: 9px; background: var(--primary-dark); color: white; padding: 2px 6px; border-radius: 4px; margin-top: 4px; font-weight: 600; letter-spacing: 0.5px; }
+
+        /* HERO SECTION */
+        .hero { 
+            text-align: center; 
+            padding: 60px 20px 130px; 
+            background: linear-gradient(135deg, #0a4d3f 0%, #05362b 100%); 
+            color: white; 
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .hero h1 { 
+            font-size: 32px; 
+            margin-bottom: 15px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            position: relative;
+        }
+        .hero p { 
+            font-size: 18px; 
+            opacity: 0.9; 
+            max-width: 600px; 
+            margin: 0 auto 30px; 
+            font-weight: 400;
+            position: relative;
+        }
+        
+        /* CARD CONTAINER */
+        .container { max-width: 500px; margin: -80px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+        
+        .offer-card { 
+            background: white; 
+            border-radius: 24px; 
+            text-align: center; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); 
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .offer-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #e07c26, #d66727, #b85b20);
+        }
+
+        .header-ribbon { 
+            background: var(--gold-light); 
+            color: #8a6d1c; 
+            font-weight: 700; 
+            padding: 12px; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            border-bottom: 1px dashed #e0d0a0;
+            margin-top: 6px;
+        }
+        
+        .card-body { padding: 30px 24px; }
+        
+        .product-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 4px; letter-spacing: -0.5px; }
+        .product-subtitle { color: var(--text-light); font-size: 15px; margin-bottom: 15px; font-weight: 500; }
+        
+        .target-audience { font-size: 13px; color: #4b5563; margin-bottom: 25px; font-weight: 500; background: #f3f4f6; display: inline-block; padding: 4px 12px; border-radius: 20px; }
+
+        /* 3-TIER PRICING TABLE */
+        .pricing-container { 
+            margin: 25px 0; 
+            text-align: left; 
+            border: 1px solid var(--border); 
+            border-radius: var(--radius); 
+            overflow: hidden;
+        }
+        .pricing-row { 
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1fr; 
+            padding: 12px 15px; 
+            border-bottom: 1px solid var(--border); 
+            font-size: 0.85rem; 
+            align-items: center;
+            background: white;
+        }
+        .pricing-row:last-child { border-bottom: none; }
+        .pricing-row.header { background: var(--bg); font-weight: 700; color: var(--text); border-bottom: 2px solid var(--border); }
+        .pricing-row.highlight { background: #e6f4ef; border-left: 3px solid var(--primary); }
+        .plan-name { font-weight: 600; color: var(--text-dark); }
+        .plan-price { font-weight: 700; color: var(--primary); text-align: center; }
+        .plan-amc { color: var(--text-light); text-align: center; font-size: 0.75rem; }
+        .plan-badge { background: var(--gold); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; margin-left: 8px; }
+        .footer-note { text-align: center; font-size: 0.75rem; color: var(--text-light); padding-top: 15px; border-top: 1px solid var(--border); margin-top: 15px; }
+
+        /* FEATURES */
+        .features { list-style: none; padding: 0; margin: 30px 0; text-align: left; }
+        .features li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid #f1f5f9; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px; 
+            font-size: 15px; 
+            color: #374151; 
+        }
+        .features li:last-child { border-bottom: none; }
+        .icon-check { color: #10b981; margin-top: 3px; font-size: 16px; }
+
+        /* PULSE ANIMATION */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* BUTTONS */
+        .cta-btn { 
+            width: 100%; 
+            padding: 18px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 18px; 
+            transition: all 0.2s ease;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-wa {
+            background: linear-gradient(180deg, #25D366 0%, #128C7E 100%);
+            color: white; 
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            animation: pulse-green 2s infinite; 
+        }
+        .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(37, 211, 102, 0.4); }
+
+        .btn-order {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-order:hover { background: #f0f7ff; transform: translateY(-2px); }
+
+        /* PORTFOLIO GRID */
+        .portfolio-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .grid-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid #f1f5f9;
+        }
+        .grid-item:hover { transform: translateY(-3px); border-color: var(--primary); }
+        
+        .thumb {
+            height: 120px;
+            width: 100%;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+        .item-info { padding: 12px; text-align: left; }
+        .item-cat { font-size: 10px; color: var(--text-light); text-transform: uppercase; font-weight: 700; }
+        .item-name { font-size: 13px; font-weight: 700; color: var(--text); margin-top: 2px; }
+        .live-badge { 
+            font-size: 9px; background: #ecfdf5; color: #059669; padding: 2px 6px; 
+            border-radius: 4px; display: inline-block; margin-top: 6px; font-weight: 600;
+        }
+
+        /* FAQ SECTION */
+        .faq-section { max-width: 600px; margin: 40px auto 60px; padding: 0 20px; }
+        .faq-title { text-align: center; font-weight: 800; color: var(--primary); margin-bottom: 25px; font-size: 22px; }
+        details { background: white; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); overflow: hidden; }
+        summary { padding: 15px; font-weight: 700; cursor: pointer; color: var(--text); font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: "+"; color: var(--primary); font-size: 18px; }
+        details[open] summary::after { content: "-"; }
+        .faq-a { padding: 0 15px 15px; color: var(--text-light); font-size: 14px; line-height: 1.5; border-top: 1px solid #f1f5f9; margin-top: 5px; padding-top: 10px; }
+
+        footer { 
+            text-align: center; 
+            font-size: 13px; 
+            color: var(--text-light); 
+            border-top: 1px solid #e5e7eb; 
+            padding: 40px 20px; 
+            background: white;
+        }
+        footer a { color: var(--text-light); transition: 0.2s; }
+        footer a:hover { color: var(--primary); }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 28px; }
+            .grid { grid-template-columns: 1fr 1fr; }
+            .pricing-row { grid-template-columns: 1fr 1fr 1fr; font-size: 0.75rem; padding: 10px; }
+        }
+
+        /* STICKY WHATSAPP BUTTON */
+        .sticky-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+        
+        .sticky-wa:hover {
+            transform: scale(1.1);
+        }
+
+        @media (min-width: 768px) {
+            .sticky-wa {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="brand">
+           <!-- Updated to use .png provided in your logo -->
+           <img src="./logo.png" alt="Ratan" class="logo-img">
+            <div class="brand-text">RATAN</div>
+            <div class="brand-tagline">Est. 2025</div>
+            <div class="msme-badge">REG. MSME: UDYAM-AS-03-0083968</div>
+        </a>
+        <div id="google_translate_element"></div>
+    </nav>
+
+    <header class="hero">
+        <h1>A Custom Website for Your Clinic</h1>
+        <p>Patients search online before they call. Give your practice a clean, professional digital presence that builds trust, shares your services, and makes booking effortless.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="offer-card">
+            <div class="header-ribbon">Ratan Clinic Systems</div>
+            
+            <div class="card-body">
+                <div class="product-title">Ratan Clinic Solutions</div>
+                <div class="product-subtitle">Design & Development for Independent Clinics</div>
+                
+                <div class="target-audience">Perfect for: Ophthalmologists · Dentists · Surgical Centres</div>
+
+                <!-- 3-TIER PRICING TABLE -->
+                <div class="pricing-container">
+                    <div class="pricing-row header">
+                        <div>Plan</div>
+                        <div style="text-align:center;">Setup</div>
+                        <div style="text-align:center;">AMC / Year</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="plan-name">WhatsApp Connect <span class="plan-badge">Start Here</span></div>
+                        <div class="plan-price">₹10k</div>
+                        <div class="plan-amc">₹3k</div>
+                    </div>
+                    <div class="pricing-row highlight">
+                        <div class="plan-name">Smart Queue (Polyclinic) <span class="plan-badge" style="background:#0a4d3f;">Most Popular</span></div>
+                        <div class="plan-price">₹15k</div>
+                        <div class="plan-amc">₹10k</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="plan-name">Admin Dashboard (Full DB)</div>
+                        <div class="plan-price">₹25k</div>
+                        <div class="plan-amc">₹20k</div>
+                    </div>
+                </div>
+                <div class="footer-note">All plans include a 24-hour custom demo. No 3rd party plugin updates.</div>
+
+                <!-- Core Features -->
+                <ul class="features">
+                    <li>
+                        <i class="fa-solid fa-ban icon-check"></i>
+                        <span><b>Zero middleman fees:</b> Patients book via your own website.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-mobile-screen icon-check"></i>
+                        <span><b>Mobile-first, ultra-fast design:</b> Perfect for patients booking from their phones. Loads in under 2 seconds.</span>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-image icon-check"></i>
+                        <span><b>Premium clinic storefront:</b> Showcase your doctors, surgical gallery, and specialty services.</span>
+                    </li>
+                </ul>
+
+                <!-- 3-STEP BOOKING FLOW INFOGRAPHIC -->
+                <div class="step-row" style="margin-top: 25px; background: white; padding: 15px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px;">
+                    <div style="text-align: center; flex: 1; min-width: 80px;">
+                        <div class="step-circle" style="font-size: 2rem; background: #eff6ff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;">📝</div>
+                        <strong class="step-text" style="font-size: 0.8rem;">Patient fills form</strong>
+                    </div>
+                    <div class="step-arrow" style="font-size: 1.5rem; color: #cbd5e1; display: flex; align-items: center;">→</div>
+                    <div style="text-align: center; flex: 1; min-width: 80px;">
+                        <div class="step-circle" style="font-size: 2rem; background: #f0fdf4; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;">📱</div>
+                        <strong class="step-text" style="font-size: 0.8rem;">Clinic receives alert</strong>
+                    </div>
+                    <div class="step-arrow" style="font-size: 1.5rem; color: #cbd5e1; display: flex; align-items: center;">→</div>
+                    <div style="text-align: center; flex: 1; min-width: 80px;">
+                        <div class="step-circle" style="font-size: 2rem; background: #fef2f2; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;">✅</div>
+                        <strong class="step-text" style="font-size: 0.8rem; color:#10b981;">Keep 100% of your fee</strong>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/916001699400?text=Hi%20Ratan!%20I%20run%20a%20clinic%20in%20Assam.%20I%20want%20to%20know%20more%20about%20the%20custom%20website%20and%20booking%20system." class="cta-btn btn-wa">
+                    <i class="fa-brands fa-whatsapp"></i> Chat about your clinic
+                </a>
+                
+                <div style="font-size:12px;color:#6b7280;margin-top:8px;margin-bottom:15px;">
+                    Ask about our 24-hour custom demo preview
+                </div>
+
+                <a href="#portfolio" class="cta-btn btn-order">
+                    <i class="fa-solid fa-eye"></i> View Clinic Demos
+                </a>
+                
+                <div style="font-size:12px;color:#6b7280;margin-top:8px;margin-bottom:15px; border-top: 1px solid var(--border); padding-top: 15px;">
+                    <i class="fa-regular fa-clock" style="color: var(--gold);"></i> Free 30-minute consultation to discuss your clinic's needs.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="portfolio" class="portfolio-section">
+        <div class="section-title">Live Clinic Demo Previews</div>
+        <p style="font-size:16px; color:#64748b; margin-bottom:10px;">See what your patients will experience when they search for your clinic.</p>
+        <p style="font-size:15px; color:#374151; font-weight:500; margin-bottom:30px;">These are sample profiles showcasing the layout, booking form, and mobile responsiveness.</p>
+        
+        <div class="grid">
+            <a href="https://ratankalita-lgtm.github.io/clinic/" target="_blank" class="grid-item">
+                <div class="thumb-container">
+                    <div style="height:120px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; color:#6b7280;">👁️ Clinic Demo A</div>
+                </div>
+                <div class="item-info">
+                    <div class="item-cat">Ophthalmology</div>
+                    <div class="item-name">City Vision Sample</div>
+                    <div class="live-badge">Live Preview</div>
+                </div>
+            </a>
+
+            <a href="https://ne-connect.github.io/clinic/" target="_blank" class="grid-item">
+                <div class="thumb-container">
+                    <div style="height:120px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; color:#6b7280;">⚙️ Ratan Clinic</div>
+                </div>
+                <div class="item-info">
+                    <div class="item-cat">Authorized Developer</div>
+                    <div class="item-name">Ratan Kalita</div>
+                    <div class="live-badge">Live Demo</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-title">Questions from local clinics</div>
+        
+        <details>
+            <summary>What if I just want a WhatsApp button and not a complex system?</summary>
+            <div class="faq-a">The <strong>WhatsApp Connect</strong> plan is perfect for this. We build your premium mobile site, and when a patient books, it opens a pre-filled WhatsApp message directly to your clinic number. ₹10k setup + ₹3k/year.</div>
+        </details>
+        
+        <details>
+            <summary>How do I upgrade from WhatsApp to a full dashboard later?</summary>
+            <div class="faq-a">Seamlessly. You can move up to the <strong>Smart Queue</strong> or <strong>Admin Dashboard</strong> tiers anytime. The AMC simply adjusts to the new tier, and we migrate your existing data to the new system.</div>
+        </details>
+        
+        <details>
+            <summary>How much time does it take to set up?</summary>
+            <div class="faq-a">Once you send me your clinic name, doctor photos, and address, I can have a live preview for you within 24 hours.</div>
+        </details>
+    </div>
+  
+    <footer>
+        <p>Ratan Clinic Systems · Premium Business Solutions<br>Guwahati, Assam - 781024</p>
+        <p style="margin-top: 15px; font-weight: 600; color: #374151;">
+            Built for the clinics that want to own their digital presence.
+        </p>
+        <p style="margin-top: 15px;">
+            <a href="legal.html" style="text-decoration: underline;">Privacy & Terms</a>
+            <a href="sla.html" style="color: #6b7280; text-decoration: none;">Service Level Agreement</a>
+        </p>
+        <p>© 2026 Ratan Clinic Systems. All rights reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/916001699400?text=Hi%20Ratan!%20I%20run%20a%20clinic%20in%20Assam.%20I%20want%20to%20know%20more%20about%20the%20custom%20website%20and%20zero-commission%20booking%20system." class="sticky-wa" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,as,hi,bn', // English, Assamese, Hindi, Bengali
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
